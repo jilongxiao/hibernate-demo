@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- 主要三部分配置-->
+        <!-- 1.配置数据库信息，必须的-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/javaee?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <!-- 2.配置hibernate信息，可选的-->
+        <!-- 输出底层的sql语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 对底层sql进行格式化-->
+        <property name="hibernate.format_sql">true</property>
+        <!--配置数据的方言，如mysql中limit
+        oracle的rownum-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!-- 3.把映射文件配置到核心文件中，必须的-->
+        <!-- 加载映射文件 -->
+        <mapping resource="mapper/User.hbm.xml"/>
+        <mapping class="com.jlx.vo.JlxUsertable"/>
+        <mapping resource="JlxUsertable.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+

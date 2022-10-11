@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <!--
+        class标签：配置该实体类的数据库表
+            name属性：该实体类的路径（全局路径、全限定名）
+            table属性：该实体类关联的数据库表的名称
+    -->
+    <class name="com.jlx.vo.User" table="userTable">
+        <!--
+        id标签：配置主键属性
+            name属性：实体类的属性名（严格区分大小写）
+            type属性：该属性的数据类型
+            column属性：对应数据表中的列名，不区分大小写，当属性名与列名一致时，可省略不写
+        -->
+        <id name="id" type="java.lang.Integer" column="id">
+            <!-- 配置主键生成策略 -->
+            <!-- assigned:主键有程序提供，默认生成策略，一般不用 -->
+            <generator class="assigned"/>
+        </id>
+        <!--
+            property标签：配置普通属性（非主键）
+                name属性：实体类的属性名（严格区分大小写）
+                type属性：该属性的数据类型
+                column属性：对应数据库表中的列名，不区分大小写，当属性名与列名一致时，可省略不写
+        -->
+        <property name="username" type="string" column="username"/>
+
+        <property name="password" type="java.lang.String">
+            <column name="password"></column>
+        </property>
+    </class>
+</hibernate-mapping>
